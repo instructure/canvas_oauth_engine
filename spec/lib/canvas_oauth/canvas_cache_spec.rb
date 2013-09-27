@@ -33,12 +33,12 @@ describe CanvasOauth::CanvasCache do
       end
 
       it "handles HTTParty::Responses properly" do
-        request = mock(call: HTTParty.get("http://canvas/account.json"))
+        request = double(call: HTTParty.get("http://canvas/account.json"))
         object.cached_response("key", request)['id'].should == 3
       end
 
       it "handles arrays (paginated results) properly" do
-        request = mock(call: [HTTParty.get("http://canvas/account.json")])
+        request = double(call: [HTTParty.get("http://canvas/account.json")])
         object.cached_response("key", request).first['id'].should == 3
       end
     end

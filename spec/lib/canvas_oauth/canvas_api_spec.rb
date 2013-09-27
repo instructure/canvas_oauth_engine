@@ -25,7 +25,7 @@ describe CanvasOauth::CanvasApi do
     end
 
     it "returns the access token" do
-      CanvasOauth::CanvasApi.stub!(:post).and_return({ 'access_token' => 'token' })
+      CanvasOauth::CanvasApi.stub(:post).and_return({ 'access_token' => 'token' })
       canvas.get_access_token('code').should == 'token'
     end
 
@@ -51,12 +51,12 @@ describe CanvasOauth::CanvasApi do
       end
 
       it "raises an authenticate error when the response is a 401 and WWW-Authenticate is set" do
-        CanvasOauth::CanvasApi.stub(:get).and_return(mock(unauthorized?: true, headers: { 'WWW-Authenticate' => true }))
+        CanvasOauth::CanvasApi.stub(:get).and_return(double(unauthorized?: true, headers: { 'WWW-Authenticate' => true }))
         expect { canvas.authenticated_request :get, '/path' }.to raise_error CanvasOauth::CanvasApi::Authenticate
       end
 
       it "raises an unauthorized error when the response is a 401" do
-        CanvasOauth::CanvasApi.stub(:get).and_return(mock(unauthorized?: true, headers: {}))
+        CanvasOauth::CanvasApi.stub(:get).and_return(double(unauthorized?: true, headers: {}))
         expect { canvas.authenticated_request :get, '/path' }.to raise_error CanvasOauth::CanvasApi::Unauthorized
       end
     end
@@ -169,9 +169,9 @@ describe CanvasOauth::CanvasApi do
 
   describe "pagination" do
     describe "valid_page?" do
-      let(:valid_page) { mock(size: 2, nil?: false, body: '[{some:json}]') }
+      let(:valid_page) { double(size: 2, nil?: false, body: '[{some:json}]') }
       let(:same_page) { valid_page }
-      let(:blank_page) { mock(size: 0, nil?: false, body: '[]') }
+      let(:blank_page) { double(size: 0, nil?: false, body: '[]') }
 
       specify { canvas.valid_page?(nil).should be_false }
       specify { canvas.valid_page?(valid_page).should be_true }

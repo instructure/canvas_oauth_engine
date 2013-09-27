@@ -3,8 +3,6 @@ require 'ostruct'
 require 'redis'
 require 'httparty'
 require 'link_header'
-require 'ims'
-require 'nokogiri'
 
 require "canvas_oauth/config"
 require "canvas_oauth/canvas_application"
