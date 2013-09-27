@@ -1,0 +1,12 @@
+default: &default
+  key: 2
+  secret: a1b2c3d4
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+cucumber:
+  <<: *default

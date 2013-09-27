@@ -1,0 +1,12 @@
+default: &default
+  username: admin
+  password: changeme
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+cucumber:
+  <<: *default

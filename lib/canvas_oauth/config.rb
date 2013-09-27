@@ -1,0 +1,1 @@
+CanvasOauth::Config = OpenStruct.new

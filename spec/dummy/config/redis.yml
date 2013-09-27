@@ -1,0 +1,11 @@
+default: &default
+  uri: redis://localhost:6379
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+cucumber:
+  <<: *default
