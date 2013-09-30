@@ -9,7 +9,7 @@ be looking at verifying with Rails 4 soon.
 Add the gem to your `Gemfile` with the following line, and then `bundle install`
 
 ```
-gem 'canvas_oauth'
+gem 'canvas_oauth_engine', :require => 'canvas_oauth'
 ```
 
 Then, mount the engine to your app by adding this line to your `routes.rb` file

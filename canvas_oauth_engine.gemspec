@@ -5,13 +5,15 @@ require "canvas_oauth/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "canvas_oauth"
+  s.name        = "canvas_oauth_engine"
   s.version     = CanvasOauth::VERSION
-  s.authors     = ["Dave Donahue", "Adam Anderson"]
-  s.email       = ["adam.anderson@12spokes.com"]
+  s.authors     = ["Dave Donahue", "Adam Anderson", "Simon Williams"]
+  s.email       = ["adam.anderson@12spokes.com", "simon@instructure.com"]
   s.homepage    = ""
-  s.summary     = ""
-  s.description = ""
+  s.summary     = <<-SUM
+CanvasOauth is a mountable engine for handling the oauth workflow with
+canvas and making api calls from your rails app.
+SUM
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
