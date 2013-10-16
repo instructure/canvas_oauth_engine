@@ -23,7 +23,7 @@ Next, include the engine in your `ApplicationController`
 ```
 class ApplicationController < ActionController::Base
   include CanvasOauth::CanvasApplication
-  
+
   ...
 end
 ```
@@ -52,6 +52,8 @@ generate in the canvas application.
 Finally, run migrations:
 
 ```
+bundle exec install
+bundle exec rake railties:install:migrations
 bundle exec rake db:migrate
 ```
 
