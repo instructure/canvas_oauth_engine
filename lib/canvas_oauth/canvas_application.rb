@@ -6,8 +6,6 @@ module CanvasOauth
     end
 
     included do
-      include CanvasCache
-
       helper_method :canvas
 
       rescue_from CanvasApi::Authenticate, with: :reauthenticate

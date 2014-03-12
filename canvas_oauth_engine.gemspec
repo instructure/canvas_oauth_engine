@@ -21,7 +21,6 @@ SUM
   s.add_dependency "rails", "~> 3.2.12"
   s.add_dependency 'httparty', '>= 0.9.0'
   s.add_dependency 'link_header', '0.0.6'
-  s.add_dependency 'redis', '>= 2.2.2'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec"

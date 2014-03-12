@@ -11,9 +11,5 @@ module CanvasOauth
     initializer "canvas_oauth.canvas_config" do |app|
       CanvasOauth::CanvasConfig.setup!
     end
-
-    initializer "canvas_oauth.redis" do |app|
-      CanvasOauth::RedisConfig.setup!
-    end
   end
 end
