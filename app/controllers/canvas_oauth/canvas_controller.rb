@@ -1,5 +1,5 @@
 module CanvasOauth
-  class CanvasController < ApplicationController
+  class CanvasController < CanvasOauth::ApplicationController
     skip_before_filter :request_canvas_authentication
 
     def oauth
