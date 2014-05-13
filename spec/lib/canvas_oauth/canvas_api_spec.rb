@@ -13,9 +13,9 @@ describe CanvasOauth::CanvasApi do
   end
 
   describe "auth_url" do
-    subject { canvas.auth_url('http://localhost:3001/canvas/oauth') }
+    subject { canvas.auth_url('http://localhost:3001/canvas/oauth', 'zzxxyy') }
 
-    it { should == "http://test.canvas/login/oauth2/auth?client_id=key&response_type=code&redirect_uri=http://localhost:3001/canvas/oauth" }
+    it { should == "http://test.canvas/login/oauth2/auth?client_id=key&response_type=code&state=zzxxyy&redirect_uri=http://localhost:3001/canvas/oauth" }
   end
 
   describe "get_access_token" do

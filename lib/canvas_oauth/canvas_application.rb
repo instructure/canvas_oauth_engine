@@ -29,7 +29,8 @@ module CanvasOauth
 
     def request_canvas_authentication
       if !params[:code].present? && !canvas_token.present?
-        redirect_to canvas.auth_url(canvas_oauth_url)
+        session[:oauth2_state] = SecureRandom.urlsafe_base64(24)
+        redirect_to canvas.auth_url(canvas_oauth_url, session[:oauth2_state])
       end
     end
 

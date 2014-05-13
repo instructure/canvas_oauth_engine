@@ -198,8 +198,8 @@ module CanvasOauth
       root_account_id(course_account_id(course_id))
     end
 
-    def auth_url(redirect_uri)
-      "#{canvas_url}/login/oauth2/auth?client_id=#{key}&response_type=code&redirect_uri=#{redirect_uri}"
+    def auth_url(redirect_uri, oauth2_state)
+      "#{canvas_url}/login/oauth2/auth?client_id=#{key}&response_type=code&state=#{oauth2_state}&redirect_uri=#{redirect_uri}"
     end
 
     def get_access_token(code)
