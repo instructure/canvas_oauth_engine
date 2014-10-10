@@ -19,7 +19,17 @@ module CanvasOauth
       params.last[:headers] ||= {}
       params.last[:headers]['Authorization'] = "Bearer #{token}"
 
+      start = Time.now
+
       response = self.class.send(method, *params)
+
+      Rails.logger.info {
+        stop = Time.now
+        elapsed = ((stop - start) * 1000).round(2)
+
+        params.last[:headers].reject! { |k| k == 'Authorization' }
+        "API call (#{elapsed}ms): #{method} #{params.inspect}"
+      }
 
       if response && response.unauthorized?
         if response.headers['WWW-Authenticate'].present?
