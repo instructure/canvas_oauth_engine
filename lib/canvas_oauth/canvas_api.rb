@@ -169,6 +169,10 @@ module CanvasOauth
       paginated_get "/api/v1/courses/#{course_id}/assignments"
     end
 
+    def get_assignment(course_id, assignment_id)
+      authenticated_get "/api/v1/courses/#{course_id}/assignments/#{assignment_id}"
+    end
+
     def get_user_profile(user_id)
       authenticated_get "/api/v1/users/#{user_id}/profile"
     end
