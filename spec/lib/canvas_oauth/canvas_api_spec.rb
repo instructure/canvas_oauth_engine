@@ -52,12 +52,12 @@ describe CanvasOauth::CanvasApi do
 
       it "raises an authenticate error when the response is a 401 and WWW-Authenticate is set" do
         CanvasOauth::CanvasApi.stub(:get).and_return(double(unauthorized?: true, headers: { 'WWW-Authenticate' => true }))
-        expect { canvas.authenticated_request :get, '/path' }.to raise_error CanvasOauth::CanvasApi::Authenticate
+        lambda { canvas.authenticated_request :get, '/path' }.should raise_error CanvasOauth::CanvasApi::Authenticate
       end
 
       it "raises an unauthorized error when the response is a 401" do
         CanvasOauth::CanvasApi.stub(:get).and_return(double(unauthorized?: true, headers: {}))
-        expect { canvas.authenticated_request :get, '/path' }.to raise_error CanvasOauth::CanvasApi::Unauthorized
+        lambda { canvas.authenticated_request :get, '/path' }.should raise_error CanvasOauth::CanvasApi::Unauthorized
       end
     end
 
@@ -173,9 +173,9 @@ describe CanvasOauth::CanvasApi do
       let(:same_page) { valid_page }
       let(:blank_page) { double(size: 0, nil?: false, body: '[]') }
 
-      specify { canvas.valid_page?(nil).should be_false }
-      specify { canvas.valid_page?(valid_page).should be_true }
-      specify { canvas.valid_page?(blank_page).should be_false }
+      specify { canvas.valid_page?(nil).should be_falsey }
+      specify { canvas.valid_page?(valid_page).should be_truthy }
+      specify { canvas.valid_page?(blank_page).should be_falsey }
     end
 
     describe "paginated_get" do

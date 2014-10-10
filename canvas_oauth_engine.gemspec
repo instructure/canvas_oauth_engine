@@ -23,7 +23,8 @@ SUM
   s.add_dependency 'link_header', '0.0.6'
 
   s.add_development_dependency "sqlite3"
-  s.add_development_dependency "rspec", '~> 2.0'
+  s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec-its"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "rspec-rails-mocha"
   s.add_development_dependency "shoulda-matchers"
