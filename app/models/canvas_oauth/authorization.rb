@@ -1,6 +1,5 @@
 module CanvasOauth
   class Authorization < ActiveRecord::Base
-    attr_accessible :canvas_user_id, :last_used_at, :token, :tool_consumer_instance_guid
     validates :canvas_user_id, :token, :last_used_at, presence: true
 
     def self.cache_token(token, user_id, tool_consumer_instance_guid)
