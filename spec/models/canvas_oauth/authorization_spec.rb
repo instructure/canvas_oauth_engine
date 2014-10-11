@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe CanvasOauth::Authorization do
-  it { should validate_presence_of :canvas_user_id }
-  it { should validate_presence_of :token }
-  it { should validate_presence_of :last_used_at }
+  it { is_expected.to validate_presence_of :canvas_user_id }
+  it { is_expected.to validate_presence_of :token }
+  it { is_expected.to validate_presence_of :last_used_at }
 
   describe "cache_token" do
     subject { CanvasOauth::Authorization.first }
@@ -12,10 +12,10 @@ describe CanvasOauth::Authorization do
       CanvasOauth::Authorization.cache_token('abc', 123, 'abc123')
     end
 
-    its(:token) { should == 'abc' }
-    its(:canvas_user_id) { should == 123 }
-    its(:tool_consumer_instance_guid) { should == 'abc123' }
-    its(:last_used_at) { should be_present }
+    its(:token) { is_expected.to eq 'abc' }
+    its(:canvas_user_id) { is_expected.to eq 123 }
+    its(:tool_consumer_instance_guid) { is_expected.to eq 'abc123' }
+    its(:last_used_at) { is_expected.to be_present }
   end
 
   describe "fetch_token" do
@@ -28,7 +28,7 @@ describe CanvasOauth::Authorization do
       end
 
       it "retrieves the latest one" do
-        token.should == 'def'
+        expect(token).to eq 'def'
       end
     end
 
@@ -37,11 +37,11 @@ describe CanvasOauth::Authorization do
         CanvasOauth::Authorization.cache_token('abc', 123, 'wrong')
       end
 
-      it { should be_nil }
+      it { is_expected.to be_nil }
     end
 
     context "when no token exists" do
-      it { should be_nil }
+      it { is_expected.to be_nil }
     end
   end
 end

@@ -54,12 +54,4 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include CanvasOauth::UrlHelpers, type: :controller
-
-  # Explicitly use these until we translate to the :expect syntax
-  config.expect_with :rspec do |c|
-    c.syntax = :should
-  end
-  config.mock_with :rspec do |c|
-    c.syntax = :should
-  end
 end
