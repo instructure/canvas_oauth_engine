@@ -159,6 +159,10 @@ module CanvasOauth
       paginated_get "/api/v1/courses/#{course_id}/users"
     end
 
+    def get_all_course_users(course_id)
+      paginated_get "/api/v1/courses/#{course_id}/users", { query: {enrollment_state: ["active","invited","rejected","completed","inactive"] } }
+    end
+
     def get_course_teachers_and_tas(course_id)
       paginated_get "/api/v1/courses/#{course_id}/users", { query: { enrollment_type: ['teacher', 'ta'] } }
     end
@@ -172,7 +176,7 @@ module CanvasOauth
     end
 
     def get_sections(course_id)
-      paginated_get "/api/v1/courses/#{course_id}/sections", { query: { :include => ['students', 'avatar_url'] } }
+      paginated_get "/api/v1/courses/#{course_id}/sections", { query: { :include => ['students', 'avatar_url', 'enrollments'] } }
     end
 
     def get_assignments(course_id)
