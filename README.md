@@ -29,7 +29,7 @@ end
 ```
 
 After that, create an `canvas.yml` file in your `config/` folder that looks something
-like this:
+like this (or see `config/canvas.yml.example` for a template):
 
 ```
 default: &default
