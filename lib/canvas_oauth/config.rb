@@ -1,1 +1,3 @@
-CanvasOauth::Config = OpenStruct.new
+module CanvasOauth
+  Config = OpenStruct.new
+end
