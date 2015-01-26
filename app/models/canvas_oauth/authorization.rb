@@ -3,12 +3,12 @@ module CanvasOauth
     validates :canvas_user_id, :token, :last_used_at, presence: true
 
     def self.cache_token(token, user_id, tool_consumer_instance_guid)
-      create(
-        token: token,
-        canvas_user_id: user_id,
-        last_used_at: Time.now,
-        tool_consumer_instance_guid: tool_consumer_instance_guid
-      )
+      create do |t|
+        t.token = token
+        t.canvas_user_id = user_id
+        t.tool_consumer_instance_guid = tool_consumer_instance_guid
+        t.last_used_at = Time.now
+      end
     end
 
     def self.fetch_token(user_id, tool_consumer_instance_guid)
