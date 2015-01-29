@@ -52,7 +52,7 @@ generate in the canvas application.
 Finally, run migrations:
 
 ```
-bundle exec install
+bundle install
 bundle exec rake railties:install:migrations
 bundle exec rake db:migrate
 ```
