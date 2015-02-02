@@ -4,6 +4,14 @@ CanvasOauth is a mountable engine for handling the oauth workflow with canvas
 and making api calls from your rails app.  This is tested with Rails 3.2, we'll
 be looking at verifying with Rails 4 soon.
 
+## Warning
+
+The current version of this gem relies heavily on being able to access the user
+session.  Since LTI apps generally run in an iframe inside the LMS, this means
+that tools using this engine MUST run on the same root domain as the LMS they
+are plugging into.  This is obviously not ideal, and we will be working to
+remove this limitation in the future.
+
 ## Installation
 
 Add the gem to your `Gemfile` with the following line, and then `bundle install`
